@@ -1,10 +1,12 @@
+import sys
 import html
 import os
 from google.cloud import vision
 from google.cloud import translate_v2 as translate
+sys.path.insert(0, '../')
+import Resources.Google_Application_Credentials as Google_Application_Credentials
 
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "C:/Users/allen/OneDrive/Documents/Programming/QHACKS2024/Qhacks2024/innate-works-413104-3342d577b88f.json"
-
+credential = Google_Application_Credentials.credential()
 def detect_text(path):
     """Detects text in the file."""
     client = vision.ImageAnnotatorClient()
