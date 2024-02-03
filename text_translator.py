@@ -3,7 +3,6 @@ import os
 from google.cloud import vision
 from google.cloud import translate_v2 as translate
 
-
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "C:/Users/jwu05/Downloads/innate-works-413104-3342d577b88f.json"
 
 def detect_text(path):
@@ -43,10 +42,11 @@ def convert_html_entites_to_ascii(arr):
         arr[i] = html.unescape(text)
     return arr
 
-img_text = detect_text('./Text Samples/German_Text.png')
-translated_text = translate_text(img_text)
-translate_text_arr = translated_text.split(" ")
-
-translate_text_arr = convert_html_entites_to_ascii(translate_text_arr)
-print(translate_text_arr)
-# print(detect_language(img_text))
+def get_img_text(path):
+    return detect_text(path)
+    
+def get_translated_text(img_text):
+    translated_text = translate_text(img_text)
+    translate_text_arr = translated_text.split(" ")
+    translate_text_arr = convert_html_entites_to_ascii(translate_text_arr)
+    return translate_text_arr
