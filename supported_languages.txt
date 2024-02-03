@@ -1,7 +1,7 @@
 Languages that are supported by the Google Cloud Translation API:
-Afrikaans		
-Albanian		
-Arabic
+Afrikaans - af	
+Albanian - sq	
+Arabic - ar 
 Armenian - hy			
 Belarusian - be			
 Bengali	- bn			
@@ -9,7 +9,7 @@ Bulgarian - bg
 Catalan	- ca			
 Chinese	- zh	
 Croatian - hr			
-Czech - cs			
+Czech			
 Danish - da			
 Dutch - nl			
 English	- en	
