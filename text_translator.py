@@ -1,5 +1,3 @@
-# test.py is now useless, all of the code has been moved to main.py and given flask integration
-
 import html
 import os
 from google.cloud import vision
