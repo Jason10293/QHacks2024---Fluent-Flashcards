@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+  </head>
+  <body>
+    <div id="flashcards"></div>
+
+    <script>
+      var flashcards = [
+        { question: "Question 1", answer: "Answer 1" },
+        { question: "Question 2", answer: "Answer 2" },
+        { question: "Question 3", answer: "Answer 3" },
+        // Add more flashcards here
+      ];
+
+      var flashcardsContainer = document.getElementById("flashcards");
+
+      flashcards.forEach(function (flashcard) {
+        var flashcardElement = document.createElement("div");
+        flashcardElement.className = "flashcard";
+        flashcardElement.onclick = function () {
+          this.classList.toggle("flipped");
+        };
+
+        var front = document.createElement("div");
+        front.className = "side front";
+        front.textContent = flashcard.question;
+
+        var back = document.createElement("div");
+        back.className = "side back";
+        back.textContent = flashcard.answer;
+
+        flashcardElement.appendChild(front);
+        flashcardElement.appendChild(back);
+
+        flashcardsContainer.appendChild(flashcardElement);
+      });
+    </script>
+  </body>
+</html>
