@@ -1,11 +1,7 @@
 fetch("/data")
   .then((response) => response.json())
   .then((data) => {
-    var flashcards = [
-      { question: "Question 1", answer: "Answer 1" },
-      { question: "Question 2", answer: "Answer 2" },
-      // Add more flashcards here
-    ];
+    var flashcards = [];
     for (let i = 0; i < data.length; i++) {
       flashcards.push({ question: data[i].question, answer: data[i].answer });
     }
