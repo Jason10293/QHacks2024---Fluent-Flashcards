@@ -67,3 +67,20 @@ nextButton.onclick = function () {
     next.classList.add("active");
   }
 };
+
+function uploadFile() {
+  var input = document.getElementById("myFile");
+  var file = input.files[0];
+  if (file) {
+    // Do something with the file here, like upload it to a server
+    alert(
+      file.type === "image/jpeg"
+        ? "File type is image/jpeg"
+        : "File type is not image/jpeg"
+    );
+    // alert("File type: " + file.type);
+    // alert("File selected: " + file.name);
+  } else {
+    alert("No file selected");
+  }
+}
