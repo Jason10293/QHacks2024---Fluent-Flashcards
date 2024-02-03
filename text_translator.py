@@ -45,7 +45,6 @@ def convert_html_entites_to_ascii(arr):
 def get_img_text(path):
     return detect_text(path)
     
-
 def get_translated_text(img_text):
     translated_text = translate_text(img_text)
     translate_text_arr = translated_text.split(" ")
