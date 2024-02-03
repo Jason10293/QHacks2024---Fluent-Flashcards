@@ -1,7 +1,10 @@
-.body {
+body {
   text-align: center;
+  background-color: #f1faee;
 }
 .flashcard {
+  font-family: noto sans, sans-serif;
+  font-weight: 600;
   width: 200px;
   height: 200px;
   line-height: 200px;
@@ -35,11 +38,11 @@
 }
 
 .flashcard .front {
-  background-color: #4caf50;
+  background-color: #457b9d;
 }
 
 .flashcard .back {
-  background-color: #f44336;
+  background-color: #457b9d;
   transform: rotateY(180deg);
 }
 
@@ -60,7 +63,8 @@
 }
 .next-button,
 .prev-button {
-  background-color: #4caf50;
+  font-family: noto sans, sans-serif;
+  background-color: #21416d;
   border: 1px solid rgba(27, 31, 35, 0.15);
   border-radius: 6px;
   box-shadow: rgba(27, 31, 35, 0.1) 0 1px 0;
@@ -83,5 +87,5 @@
 
 .next-button:hover,
 .prev-button:hover {
-  background-color: #2c974b;
+  background-color: #0f2b54;
 }
