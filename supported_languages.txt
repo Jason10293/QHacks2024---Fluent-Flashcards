@@ -9,7 +9,7 @@ Bulgarian - bg
 Catalan	- ca			
 Chinese	- zh	
 Croatian - hr			
-Czech			
+Czech - cs			
 Danish - da			
 Dutch - nl			
 English	- en	
