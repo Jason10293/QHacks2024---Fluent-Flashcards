@@ -80,3 +80,28 @@ function uploadFile() {
     alert("No file selected");
   }
 }
+
+
+const body = document.body;
+
+  // Update the background gradient based on mouse position
+  document.addEventListener("mousemove", (e) => {
+    const mouseX = e.pageX / window.innerWidth - 0.5;
+    const mouseY = e.pageY / window.innerHeight - 0.5;
+
+    // Update the gradient colors based on mouse position
+    const color1 = getColor(mouseX, mouseY, 0);
+    const color2 = getColor(mouseX, mouseY, 2);
+
+    // Set the gradient background
+    body.style.background = `linear-gradient(to right, ${color1}, ${color2})`;
+  });
+
+  // Function to get a color based on mouse position
+  function getColor(x, y, offset) {
+    const r = Math.round(50 * Math.abs(Math.sin(x * 2 * Math.PI + offset)));
+    const g = Math.round(15 * Math.abs(Math.sin(y * 2 * Math.PI + offset)));
+    const b = Math.round(100 * Math.abs(Math.sin((x + y) * Math.PI + offset)));
+    return `rgb(${r},${g},${b})`;
+  }
+  
