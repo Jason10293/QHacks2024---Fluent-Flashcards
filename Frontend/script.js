@@ -6,6 +6,7 @@ var flashcards = [
 
 var flashcardsContainer = document.getElementById("flashcards");
 var nextButton = document.getElementById("next");
+var prevButton = document.getElementById("prev");
 
 flashcards.forEach(function (flashcard, index) {
   var flashcardElement = document.createElement("div");
@@ -31,10 +32,38 @@ flashcards.forEach(function (flashcard, index) {
   flashcardsContainer.appendChild(flashcardElement);
 });
 
+prevButton.onclick = function () {
+  var current = document.querySelector(".flashcard.active");
+  if (current.classList.contains("flipped")) {
+    current.classList.remove("flipped");
+    // Delay the switching of the cards until after the flip back animation has completed
+    setTimeout(switchCard, 300); // 600ms is the duration of the flip animation
+  } else {
+    switchCard();
+  }
+
+  function switchCard() {
+    var prev =
+      current.previousElementSibling || flashcardsContainer.lastElementChild;
+    current.classList.remove("active");
+    prev.classList.add("active");
+  }
+};
+
 nextButton.onclick = function () {
   var current = document.querySelector(".flashcard.active");
-  var next =
-    current.nextElementSibling || flashcardsContainer.firstElementChild;
-  current.classList.remove("active");
-  next.classList.add("active");
+  if (current.classList.contains("flipped")) {
+    current.classList.remove("flipped");
+    // Delay the switching of the cards until after the flip back animation has completed
+    setTimeout(switchCard, 300); // 600ms is the duration of the flip animation
+  } else {
+    switchCard();
+  }
+
+  function switchCard() {
+    var next =
+      current.nextElementSibling || flashcardsContainer.firstElementChild;
+    current.classList.remove("active");
+    next.classList.add("active");
+  }
 };
