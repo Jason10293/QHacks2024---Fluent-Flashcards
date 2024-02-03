@@ -1,6 +1,4 @@
 .flashcard {
-  display: flex;
-  flex-direction: row;
   width: 200px;
   height: 200px;
   line-height: 200px;
@@ -13,6 +11,11 @@
   cursor: pointer;
   perspective: 1000px;
   background-color: transparent;
+  display: none; /* Hide all flashcards by default */
+}
+
+.flashcard.active {
+  display: block; /* Only show the active flashcard */
 }
 
 .flashcard .side {
@@ -47,4 +50,35 @@
 
 .flashcard.flipped .back {
   transform: rotateY(0deg);
+}
+
+.next-button {
+  display: block;
+  margin: 0 auto;
+  /* display: inline-block; */
+  appearance: none;
+  background-color: #4caf50;
+  border: 1px solid rgba(27, 31, 35, 0.15);
+  border-radius: 6px;
+  box-shadow: rgba(27, 31, 35, 0.1) 0 1px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial,
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  padding: 6px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.next-button:hover {
+  background-color: #2c974b;
 }
