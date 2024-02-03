@@ -1,7 +1,6 @@
-
+import html
 import os
 from google.cloud import vision
-import langdetect
 from google.cloud import translate_v2 as translate
 
 
@@ -39,10 +38,18 @@ def translate_text(text):
     translation = translate_client.translate(text, target_language='en')
     return translation['translatedText']
 
+def convert_html_entites_to_ascii(arr):
+    for i, text in enumerate(arr):
+        arr[i] = html.unescape(text)
+    return arr
 
-img_text = detect_text('Chinese_Text.png')
-print(translate_text(img_text))
-print(detect_language(img_text))
+img_text = detect_text('./Text Samples/German_Text.png')
+translated_text = translate_text(img_text)
+translate_text_arr = translated_text.split(" ")
+
+translate_text_arr = convert_html_entites_to_ascii(translate_text_arr)
+print(translate_text_arr)
+# print(detect_language(img_text))
 
 
 
