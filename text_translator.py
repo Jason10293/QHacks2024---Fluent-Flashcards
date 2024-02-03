@@ -50,6 +50,3 @@ translate_text_arr = translated_text.split(" ")
 translate_text_arr = convert_html_entites_to_ascii(translate_text_arr)
 print(translate_text_arr)
 # print(detect_language(img_text))
-
-
-
