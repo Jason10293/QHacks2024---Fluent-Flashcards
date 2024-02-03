@@ -1,3 +1,6 @@
+.body {
+  text-align: center;
+}
 .flashcard {
   width: 200px;
   height: 200px;
@@ -52,11 +55,11 @@
   transform: rotateY(0deg);
 }
 
-.next-button {
-  display: block;
-  margin: 0 auto;
-  /* display: inline-block; */
-  appearance: none;
+.button-container {
+  text-align: center;
+}
+.next-button,
+.prev-button {
   background-color: #4caf50;
   border: 1px solid rgba(27, 31, 35, 0.15);
   border-radius: 6px;
@@ -75,7 +78,6 @@
   text-decoration: none;
   user-select: none;
   touch-action: manipulation;
-  vertical-align: middle;
   white-space: nowrap;
 }
 
