@@ -81,6 +81,7 @@
   white-space: nowrap;
 }
 
-.next-button:hover {
+.next-button:hover,
+.prev-button:hover {
   background-color: #2c974b;
 }
