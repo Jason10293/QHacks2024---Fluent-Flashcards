@@ -109,3 +109,19 @@ function getColor(x, y, offset) {
   const b = Math.round(100 * Math.abs(Math.sin((x + y) * Math.PI + offset)));
   return `rgb(${r},${g},${b})`;
 }
+
+ // Check if the browser supports the getUserMedia API
+ if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+  // Access the user's camera
+  navigator.mediaDevices.getUserMedia({ video: true })
+    .then(function (stream) {
+      // Display the camera stream in the video element
+      var videoElement = document.getElementById('video');
+      videoElement.srcObject = stream;
+    })
+    .catch(function (error) {
+      console.error('Error accessing the camera:', error);
+    });
+} else {
+  console.error('getUserMedia is not supported in this browser');
+}
