@@ -122,4 +122,47 @@ function getColor(x, y, offset) {
   const g = Math.round(15 * Math.abs(Math.sin(y * 2 * Math.PI + offset)));
   const b = Math.round(50 * Math.abs(Math.sin((x + y) * Math.PI + offset)));
   return `rgb(${r},${g},${b})`;
+
+}
+
+var videoElement = document.getElementById('video');
+var canvas = document.createElement('canvas');
+var captureButton = document.getElementById('captureButton');
+
+ // Check if the browser supports the getUserMedia API
+ if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+  // Access the user's camera
+  navigator.mediaDevices.getUserMedia({ video: true })
+    .then(function (stream) {
+      // Display the camera stream in the video element
+      var videoElement = document.getElementById('video');
+      videoElement.srcObject = stream;
+    })
+    .catch(function (error) {
+      console.error('Error accessing the camera:', error);
+    });
+} else {
+  console.error('getUserMedia is not supported in this browser');
+}
+
+function capturePhoto() {
+  videoElement.pause();
+
+  console.log("Capturing photo...")
+
+  canvas.width = videoElement.videoWidth;
+  canvas.height = videoElement.videoHeight;
+
+  var photoElement = new Image();
+  photoElement.src = canvas.toDataURL('image/png');
+
+  document.body.appendChild(photoElement);
+
+  // Save the captured photo by simulating a download
+  var link = document.createElement('a');
+  link.href = canvas.toDataURL('image/png');
+  link.download = 'captured_photo.png';
+  link.click();
+
+  videoElement.play();
 }
