@@ -22,7 +22,7 @@ def detect_text(path):
 
     words = ''
     for text in texts[1:]:
-        words += text.description + '||'
+        words += text.description + '|| '
     return words.strip()
     
 # Detect the language of the input text
