@@ -17,7 +17,6 @@ for img_text, translate_text in zip(img_text_arr, translated_text_arr):
     }
     js_objects.append(js_object)
 
-
 app = Flask(__name__)
 @app.route('/')
 def index():
