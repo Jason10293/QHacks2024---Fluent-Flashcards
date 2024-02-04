@@ -6,4 +6,4 @@ def credential():
 
 #cohere APIkey goes here 
 def cohere():
-    return ""
+    return "lksdjflkdsj"
