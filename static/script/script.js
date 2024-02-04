@@ -3,27 +3,35 @@ var nextButton = document.getElementById("next");
 var prevButton = document.getElementById("prev");
 
 flashcards = [];
+let randomAnswersArr = [];
 
-// console.log(flashcards);
 function getFlashcardData() {
   return fetch("/data")
     .then((response) => response.json())
     .then((data) => {
-      // console.log(data);
       return data;
     })
     .catch((error) => console.error("Error:", error));
 }
 
 async function main() {
-  const data = await getFlashcardData();
+  data = await getFlashcardData();
   for (let i = 0; i < data.length; i++) {
-    // flashcards.push("Hello");
     flashcards.push({ question: data[i].question, answer: data[i].answer });
   }
   generateFlashcards();
-  console.log(flashcards[0].question);
+  for (let i = 0; i < flashcards.length; i++) {
+    var randomAnswers = [];
+    while (randomAnswers.length < 4) {
+      let random = Math.floor(Math.random() * flashcards.length);
+      if (!randomAnswers.includes(flashcards[random].answer)) {
+        randomAnswers.push(flashcards[random].answer);
+      }
+    }
+    randomAnswersArr.push(randomAnswers);
+  }
 }
+console.log(randomAnswersArr);
 function generateFlashcards() {
   flashcards.forEach(function (flashcard, index) {
     var flashcardElement = document.createElement("div");
@@ -37,7 +45,6 @@ function generateFlashcards() {
 
     var front = document.createElement("div");
     front.className = "side front";
-    console.log(flashcard.question);
     front.textContent = flashcard.question;
 
     var back = document.createElement("div");
