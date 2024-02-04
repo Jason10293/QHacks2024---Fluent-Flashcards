@@ -160,15 +160,10 @@ var captureButton = document.getElementById('captureButton');
 function capturePhoto() {
   videoElement.pause();
 
-  console.log("Capturing photo...")
-
   canvas.width = videoElement.videoWidth;
   canvas.height = videoElement.videoHeight;
 
-  var photoElement = new Image();
-  photoElement.src = canvas.toDataURL('image/png');
-
-  document.body.appendChild(photoElement);
+  canvas.getContext('2d').drawImage(videoElement, 0, 0, canvas.width, canvas.height);
 
   // Save the captured photo by simulating a download
   var link = document.createElement('a');
