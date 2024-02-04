@@ -159,7 +159,6 @@ body {
   margin: 40px; /* Add 10px margin on each side */
   font-size: 20px;
   font-weight: bold;
-  cursor: pointer;
   transition: 0.3s;
   box-sizing: border-box; /* Include padding and borders in the element's total width and height */
   width: calc(100% - 80px); /* Adjust the width to consider the margin on both sides */
@@ -171,7 +170,6 @@ body {
   margin: 20px; /* Add 10px margin on each side */
   font-size: 20px;
   font-weight: bold;
-  cursor: pointer;
   transition: 0.3s;
   box-sizing: border-box; /* Include padding and borders in the element's total width and height */
   width: calc(100% - 40px); /* Adjust the width to consider the margin on both sides */
