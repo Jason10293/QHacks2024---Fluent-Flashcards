@@ -1,4 +1,5 @@
 body {
+  overflow-y: scroll;
   margin: 0;
   padding: 0;
   text-align: center;
@@ -153,32 +154,67 @@ body {
   transform: translateY(2px);
 }
 
+.border1 {
+  height: 100%;
+  margin: 40px; /* Add 10px margin on each side */
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  box-sizing: border-box; /* Include padding and borders in the element's total width and height */
+  width: calc(100% - 80px); /* Adjust the width to consider the margin on both sides */
+}
+
+.border2 {
+  border: 3px solid black;
+  height: 100%;
+  margin: 20px; /* Add 10px margin on each side */
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  box-sizing: border-box; /* Include padding and borders in the element's total width and height */
+  width: calc(100% - 40px); /* Adjust the width to consider the margin on both sides */
+}
+
 .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 100vh;
+  height: 110vh;
+  margin-top: 63px;
 }
 
 .title {
+  margin-top: 10%;
+  margin-bottom: 8%;
   width: 100%;
-  font-size: 48px;
-  padding: 20px;
+  font-size: 72px;
   font-weight: bold;
-  color: aliceblue;
-  text-align: center; /* Center the text horizontally */
+  color: #fffae3;
+  text-align: left; /* Center the text horizontally */
 }
+
 .description {
   width: 100%;
-  font-size: 24px;
-  color: aliceblue;
-  text-align: center; /* Center the text horizontally */
+  font-weight: 200;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  color: #fffae3;
+  line-height: 1.7;
+  text-align: left; /* Center the text horizontally */
 }
+
 .demo {
   width: 50%;
   height: 100%;
-  background-color: lightgray;
+  background-color: #fffae3 ;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
 }
+
 .text-container {
   width: 50%;
   height: 100%;
@@ -187,11 +223,56 @@ body {
   justify-content: center;
   align-items: flex-start;
 }
+
 .strip{
   width: 100%;
-  height: 50px;
-  background-color: #457b9d;
+  height: 150px;
+  background-color: rgb(89, 34, 107);
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.strip1{
+  width: 100%;
+  height: 50px;
+  background-color: rgb(38, 6, 49);
+  display: flex;
+  justify-content: center;
+}
+
+.strip2{
+  width: 100%;
+  height: 50px;
+  background-color: rgb(38, 6, 49);
+  display: flex;
+  justify-content: center;
+  margin-top: 10%;
+}
+
+header {
+  background-color: #faf0e6;
+  padding: 10px;
+  text-align: center;
+  font-size: 20px;
+  color: white;
+  font-weight: bold;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 100;
+}
+.navbar {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  text-decoration: none;
+  padding: 10px;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: black;
+  padding: 10px;
+  margin-left: 20px;
 }
