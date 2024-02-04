@@ -72,11 +72,8 @@ prevButton.onclick = function () {
   var current = document.querySelector(".flashcard.active");
   if (current.classList.contains("flipped")) {
     current.classList.remove("flipped");
-    // Delay the switching of the cards until after the flip back animation has completed
-    setTimeout(switchCard, 300); // 600ms is the duration of the flip animation
-  } else {
-    switchCard();
   }
+  switchCard();
 
   function switchCard() {
     var prev =
@@ -93,11 +90,8 @@ nextButton.onclick = function () {
   var current = document.querySelector(".flashcard.active");
   if (current.classList.contains("flipped")) {
     current.classList.remove("flipped");
-    // Delay the switching of the cards until after the flip back animation has completed
-    setTimeout(switchCard, 300); // 600ms is the duration of the flip animation
-  } else {
-    switchCard();
   }
+  switchCard();
 
   function switchCard() {
     var next =
@@ -159,7 +153,9 @@ let buttons = document.querySelectorAll(".Choice-Buttons");
 buttons.forEach((button) => {
   button.addEventListener("click", function () {
     let answer = this.innerText;
-    if (answer === flashcards[curretFlashcard].answer) {
+    console.log(answer);
+    console.log(flashcards[curretFlashcard].answer);
+    if (answer.trim() == flashcards[curretFlashcard].answer.trim()) {
       alert("Correct");
     } else {
       alert("Incorrect");
