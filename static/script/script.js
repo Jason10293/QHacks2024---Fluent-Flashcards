@@ -117,6 +117,7 @@ function uploadFile() {
 const body = document.body;
 const strip1 = document.querySelector(".strip1");
 const strip2 = document.querySelector(".strip2");
+const border2 = document.querySelector(".border2");
 
 // Update the background gradient based on mouse position
 document.addEventListener("mousemove", (e) => {
@@ -126,13 +127,14 @@ document.addEventListener("mousemove", (e) => {
   // Update the gradient colors based on mouse position
   const color1 = getColor(mouseX, mouseY, 0);
   const color2 = getColor(mouseX, mouseY, 2);
-  const color3 = getColor(mouseX, mouseY, 5);
-  const color4 = getColor(mouseX, mouseY, 12);
+  const color3 = getColor2(mouseX, mouseY, 5);
+  const color4 = getColor2(mouseX, mouseY, 12);
 
   // Set the gradient background
   body.style.background = `linear-gradient(to right, ${color1}, ${color2})`;
   strip1.style.background = `linear-gradient(to bottom, ${color1}, ${color2})`;
   strip2.style.background = `linear-gradient(to bottom, ${color1}, ${color2})`;
+  border2.style.background = `linear-gradient(to bottom, ${color3}, ${color4})`;
 });
 
 // Function to get a color based on mouse position
@@ -140,6 +142,13 @@ function getColor(x, y, offset) {
   const r = Math.round(50 * Math.abs(Math.sin(x * 2 * Math.PI + offset)));
   const g = Math.round(15 * Math.abs(Math.sin(y * 2 * Math.PI + offset)));
   const b = Math.round(50 * Math.abs(Math.sin((x + y) * Math.PI + offset)));
+  return `rgb(${r},${g},${b})`;
+}
+
+function getColor2(x, y, offset) {
+  const r = Math.round(5 * Math.abs(Math.sin(x * 2 * Math.PI + offset)));
+  const g = Math.round(90 * Math.abs(Math.sin(y * 2 * Math.PI + offset)));
+  const b = Math.round(140 * Math.abs(Math.sin((x + y) * Math.PI + offset)));
   return `rgb(${r},${g},${b})`;
 }
 
