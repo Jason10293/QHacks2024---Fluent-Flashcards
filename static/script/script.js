@@ -105,7 +105,7 @@ function uploadFile() {
   var input = document.getElementById("myFile");
   var file = input.files[0];
   if (file) {
-    // Do something with the file here, like upload it to a server
+    
     alert(
       file.type === "image/png" ? "" : "Upload failed. File Type not supported."
     );

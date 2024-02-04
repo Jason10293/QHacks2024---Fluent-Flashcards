@@ -25,7 +25,7 @@
         <div class="border1">
           <div class="strip1"></div>
           <div class="title">super translate flashcard web app</div>
-          <div class="description">This website employs Google Translate's API to capture images through the webcam, generating personalized flashcards for language learning. The interactive interface includes functionalities such as capturing and saving photos, facilitating the acquisition of vocabulary and language skills. The platform aims to provide an objective and utilitarian approach to language education, utilizing technology to streamline the learning process. -ChatGPT lol</div>
+          <div class="description">This website employs Google Translate's API to capture images through the webcam, generating personalized flashcards for language learning. The interactive interface includes functionalities such as capturing and saving photos, facilitating the acquisition of vocabulary and language skills. The platform aims to provide an objective and utilitarian approach to language education, utilizing technology to streamline the learning process.</div>
           <div class="strip2"></div>
         </div>
       </div>
@@ -51,8 +51,11 @@
       <button class="Choice-Buttons" id="Choice3"></button>
       <button class="Choice-Buttons" id="Choice4"></button>
     </div>
-    <input type="file" id="myFile" name="filename" />
-    <button onclick="uploadFile()">Upload</button>
+    <form method=post enctype=multipart/form-data>
+      <input type="file" id="myFile" name="file"/>
+      <input type=submit value=Upload>
+    </form>
+    
     <button id="captureButton" onclick="capturePhoto()">Capture Photo</button>
     <button id="toggleButton" onclick="toggleWebcam()">Toggle Webcam</button>
     <div class="video-container">
