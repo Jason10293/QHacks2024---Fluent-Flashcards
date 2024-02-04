@@ -49,7 +49,6 @@ def get_img_text(path):
     
 def get_translated_text(img_text):
     translated_text = translate_text(img_text)
-    print("TTEXT: " + translated_text)
     translated_text_arr = translated_text.split(" || ")
     translated_text_arr = convert_html_entites_to_ascii(translated_text_arr)
     return translated_text_arr
