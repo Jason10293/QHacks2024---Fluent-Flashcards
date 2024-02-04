@@ -106,6 +106,6 @@ document.addEventListener("mousemove", (e) => {
 function getColor(x, y, offset) {
   const r = Math.round(50 * Math.abs(Math.sin(x * 2 * Math.PI + offset)));
   const g = Math.round(15 * Math.abs(Math.sin(y * 2 * Math.PI + offset)));
-  const b = Math.round(100 * Math.abs(Math.sin((x + y) * Math.PI + offset)));
+  const b = Math.round(50 * Math.abs(Math.sin((x + y) * Math.PI + offset)));
   return `rgb(${r},${g},${b})`;
 }
