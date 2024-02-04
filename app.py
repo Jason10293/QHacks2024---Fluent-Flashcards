@@ -39,7 +39,7 @@ for front_flashcards, back_flashcards in zip(front_flashcards, back_flashcards):
     }
     js_objects.append(js_object)
 
-
+print(js_objects)
 app = Flask(__name__)
 @app.route('/')
 def index():

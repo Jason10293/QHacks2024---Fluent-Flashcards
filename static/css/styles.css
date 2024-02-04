@@ -65,26 +65,22 @@ body {
 }
 .next-button,
 .prev-button {
+  margin: 10px auto;
+  width: 200px;
+  max-width: 50%;
   font-family: noto sans, sans-serif;
   background-color: #21416d;
   border: 1px solid rgba(27, 31, 35, 0.15);
   border-radius: 6px;
   box-shadow: rgba(27, 31, 35, 0.1) 0 1px 0;
-  box-sizing: border-box;
   color: #fff;
   cursor: pointer;
-  font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial,
-    sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  font-family: noto sans, sans-serif;
   font-size: 14px;
   font-weight: 600;
-  line-height: 20px;
   padding: 6px 16px;
   position: relative;
   text-align: center;
-  text-decoration: none;
-  user-select: none;
-  touch-action: manipulation;
-  white-space: nowrap;
 }
 
 .next-button:hover,
@@ -99,8 +95,75 @@ header {
 }
 
 header h1 {
+  font-family: noto sans, sans-serif;
+  font-weight: 700;
   color: #f1faee;
   font-size: 40px;
   margin-top: 0;
   padding-top: 20px;
+}
+
+.answer-box {
+  max-width: 35%;
+  margin: 0 auto;
+  width: 100px;
+  display: grid; /* Change to grid display */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  grid-template-columns: repeat(2, 1fr); /* Arrange in a 2x2 grid */
+  grid-gap: 5px; /* Add gap between buttons */
+  width: 100%;
+  height: 100%;
+}
+/* CSS */
+.answer-box button {
+  align-items: center;
+  appearance: none;
+  background-image: radial-gradient(
+    100% 100% at 100% 0,
+    #5adaff 0,
+    #5468ff 100%
+  );
+  border: 0;
+  border-radius: 6px;
+  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,
+    rgba(45, 35, 66, 0.3) 0 7px 13px -3px, rgba(58, 65, 111, 0.5) 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: "JetBrains Mono", monospace;
+  height: 48px;
+  justify-content: center;
+  line-height: 1;
+  list-style: none;
+  overflow: hidden;
+  padding-left: 16px;
+  padding-right: 16px;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transition: box-shadow 0.15s, transform 0.15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  will-change: box-shadow, transform;
+  font-size: 18px;
+}
+
+.answer-box button:focus {
+  box-shadow: #4958cf 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px,
+    rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+}
+
+.answer-box button:hover {
+  box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px,
+    rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+  transform: translateY(-2px);
+}
+
+.answer-box button:active {
+  box-shadow: #3c4fe0 0 3px 7px inset;
+  transform: translateY(2px);
 }
