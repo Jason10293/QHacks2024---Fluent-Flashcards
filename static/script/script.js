@@ -110,6 +110,10 @@ function getColor(x, y, offset) {
   return `rgb(${r},${g},${b})`;
 }
 
+var videoElement = document.getElementById('video');
+var canvas = document.createElement('canvas');
+var captureButton = document.getElementById('captureButton');
+
  // Check if the browser supports the getUserMedia API
  if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
   // Access the user's camera
@@ -124,4 +128,26 @@ function getColor(x, y, offset) {
     });
 } else {
   console.error('getUserMedia is not supported in this browser');
+}
+
+function capturePhoto() {
+  videoElement.pause();
+
+  console.log("Capturing photo...")
+
+  canvas.width = videoElement.videoWidth;
+  canvas.height = videoElement.videoHeight;
+
+  var photoElement = new Image();
+  photoElement.src = canvas.toDataURL('image/png');
+
+  document.body.appendChild(photoElement);
+
+  // Save the captured photo by simulating a download
+  var link = document.createElement('a');
+  link.href = canvas.toDataURL('image/png');
+  link.download = 'captured_photo.png';
+  link.click();
+
+  videoElement.play();
 }
