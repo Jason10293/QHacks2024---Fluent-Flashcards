@@ -144,8 +144,25 @@ function getColor(x, y, offset) {
 }
 
 function renderQuestionAnswers() {
-  choiceButtonOne.innerText = randomAnswersArr[curretFlashcard][0];
-  choiceButtonTwo.innerText = randomAnswersArr[curretFlashcard][1];
-  choiceButtonThree.innerText = randomAnswersArr[curretFlashcard][2];
-  choiceButtonFour.innerText = randomAnswersArr[curretFlashcard][3];
+  const choiceButtons = [
+    choiceButtonOne,
+    choiceButtonTwo,
+    choiceButtonThree,
+    choiceButtonFour,
+  ];
+  for (let i = 0; i < choiceButtons.length; i++) {
+    choiceButtons[i].innerText = randomAnswersArr[curretFlashcard][i];
+  }
 }
+
+let buttons = document.querySelectorAll(".Choice-Buttons");
+buttons.forEach((button) => {
+  button.addEventListener("click", function () {
+    let answer = this.innerText;
+    if (answer === flashcards[curretFlashcard].answer) {
+      alert("Correct");
+    } else {
+      alert("Incorrect");
+    }
+  });
+});
