@@ -65,26 +65,22 @@ body {
 }
 .next-button,
 .prev-button {
+  margin: 10px auto;
+  width: 200px;
+  max-width: 50%;
   font-family: noto sans, sans-serif;
   background-color: #21416d;
   border: 1px solid rgba(27, 31, 35, 0.15);
   border-radius: 6px;
   box-shadow: rgba(27, 31, 35, 0.1) 0 1px 0;
-  box-sizing: border-box;
   color: #fff;
   cursor: pointer;
-  font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial,
-    sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  font-family: noto sans, sans-serif;
   font-size: 14px;
   font-weight: 600;
-  line-height: 20px;
   padding: 6px 16px;
   position: relative;
   text-align: center;
-  text-decoration: none;
-  user-select: none;
-  touch-action: manipulation;
-  white-space: nowrap;
 }
 
 .next-button:hover,
@@ -103,4 +99,19 @@ header h1 {
   font-size: 40px;
   margin-top: 0;
   padding-top: 20px;
+}
+
+.answer-box {
+  max-width: 50%;
+  margin: 0 auto;
+  display: grid; /* Change to grid display */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  grid-template-columns: repeat(2, 1fr); /* Arrange in a 2x2 grid */
+  grid-gap: 10px; /* Add gap between buttons */
+  width: 100%;
+  height: 100%;
+}
+.answer-box button {
+  padding: 10px;
 }
