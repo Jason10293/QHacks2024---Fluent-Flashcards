@@ -70,6 +70,7 @@ def full_image_parse(image_path):
 
     # for i in range(len(front_flashcards)):
     #     print(str(front_flashcards[i]) + " = " + str(back_flashcards[i]))
+    js_objects = []
     for front_flashcards, back_flashcards in zip(front_flashcards, back_flashcards):
         js_object = {
             'question': front_flashcards,
