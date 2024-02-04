@@ -4,9 +4,9 @@ import os
 from google.cloud import vision
 from google.cloud import translate_v2 as translate
 sys.path.insert(0, '../')
-import Resources.Google_Application_Credentials as Google_Application_Credentials
+import Resources.API_credentials as API_credentials
 
-credential = Google_Application_Credentials.credential()
+credential = API_credentials.credential()
 
 def detect_text(path):
     """Detects text in the file."""
@@ -22,7 +22,7 @@ def detect_text(path):
 
     words = ''
     for text in texts[1:]:
-        words += text.description + '|| '
+        words += text.description + ' || '
     return words.strip()
     
 # Detect the language of the input text
@@ -49,6 +49,6 @@ def get_img_text(path):
     
 def get_translated_text(img_text):
     translated_text = translate_text(img_text)
-    translated_text_arr = translated_text.split("||")
+    translated_text_arr = translated_text.split(" || ")
     translated_text_arr = convert_html_entites_to_ascii(translated_text_arr)
     return translated_text_arr
