@@ -8,8 +8,19 @@
       href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100;400;600;700&display=swap"
       rel="stylesheet"
     />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camera Display</title>
+    <style>
+      #video {
+        width: 100%;
+        max-width: 300px;
+        margin: 20px auto;
+      }
+    </style>
   </head>
   <body>
+    <video id="video" playsinline autoplay></video>
     <header>
       <h1>Flashcards</h1>
     </header>
@@ -21,5 +32,6 @@
     <script src="../static/script/script.js"></script>
     <input type="file" id="myFile" name="filename" />
     <button onclick="uploadFile()">Upload</button>
+    <button onclick="change_page()">Camera</button>
   </body>
 </html>
