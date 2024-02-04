@@ -2,41 +2,55 @@ var flashcardsContainer = document.getElementById("flashcards");
 var nextButton = document.getElementById("next");
 var prevButton = document.getElementById("prev");
 
-fetch("/data")
-  .then((response) => response.json())
-  .then((data) => {
-    var flashcards = [];
-    for (let i = 0; i < data.length; i++) {
-      flashcards.push({ question: data[i].question, answer: data[i].answer });
+flashcards = [];
+
+// console.log(flashcards);
+function getFlashcardData() {
+  return fetch("/data")
+    .then((response) => response.json())
+    .then((data) => {
+      // console.log(data);
+      return data;
+    })
+    .catch((error) => console.error("Error:", error));
+}
+
+async function main() {
+  const data = await getFlashcardData();
+  for (let i = 0; i < data.length; i++) {
+    // flashcards.push("Hello");
+    flashcards.push({ question: data[i].question, answer: data[i].answer });
+  }
+  generateFlashcards();
+  console.log(flashcards[0].question);
+}
+function generateFlashcards() {
+  flashcards.forEach(function (flashcard, index) {
+    var flashcardElement = document.createElement("div");
+    flashcardElement.className = "flashcard";
+    if (index === 0) {
+      flashcardElement.classList.add("active"); // Make the first flashcard active
     }
-    console.log(flashcards);
+    flashcardElement.onclick = function () {
+      this.classList.toggle("flipped");
+    };
 
-    flashcards.forEach(function (flashcard, index) {
-      var flashcardElement = document.createElement("div");
-      flashcardElement.className = "flashcard";
-      if (index === 0) {
-        flashcardElement.classList.add("active"); // Make the first flashcard active
-      }
-      flashcardElement.onclick = function () {
-        this.classList.toggle("flipped");
-      };
+    var front = document.createElement("div");
+    front.className = "side front";
+    console.log(flashcard.question);
+    front.textContent = flashcard.question;
 
-      var front = document.createElement("div");
-      front.className = "side front";
-      console.log(flashcard.question);
-      front.textContent = flashcard.question;
+    var back = document.createElement("div");
+    back.className = "side back";
+    back.textContent = flashcard.answer;
 
-      var back = document.createElement("div");
-      back.className = "side back";
-      back.textContent = flashcard.answer;
+    flashcardElement.appendChild(front);
+    flashcardElement.appendChild(back);
 
-      flashcardElement.appendChild(front);
-      flashcardElement.appendChild(back);
-
-      flashcardsContainer.appendChild(flashcardElement);
-    });
-  })
-  .catch((error) => console.error("Error:", error));
+    flashcardsContainer.appendChild(flashcardElement);
+  });
+}
+main();
 
 prevButton.onclick = function () {
   var current = document.querySelector(".flashcard.active");
@@ -106,8 +120,9 @@ document.addEventListener("mousemove", (e) => {
 function getColor(x, y, offset) {
   const r = Math.round(50 * Math.abs(Math.sin(x * 2 * Math.PI + offset)));
   const g = Math.round(15 * Math.abs(Math.sin(y * 2 * Math.PI + offset)));
-  const b = Math.round(100 * Math.abs(Math.sin((x + y) * Math.PI + offset)));
+  const b = Math.round(50 * Math.abs(Math.sin((x + y) * Math.PI + offset)));
   return `rgb(${r},${g},${b})`;
+
 }
 
 var videoElement = document.getElementById('video');
