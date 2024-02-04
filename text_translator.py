@@ -4,7 +4,7 @@ import os
 from google.cloud import vision
 from google.cloud import translate_v2 as translate
 sys.path.insert(0, '../')
-import API_credentials as API_credentials
+import Resources.API_credentials as API_credentials
 
 credential = API_credentials.credential()
 def detect_text(path):
