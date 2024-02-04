@@ -7,6 +7,7 @@ sys.path.insert(0, '../')
 import Resources.API_credentials as API_credentials
 
 credential = API_credentials.credential()
+
 def detect_text(path):
     """Detects text in the file."""
     client = vision.ImageAnnotatorClient()
@@ -21,8 +22,7 @@ def detect_text(path):
 
     words = ''
     for text in texts[1:]:
-        words += ' ' + text.description
-
+        words += text.description + ' || '
     return words.strip()
     
 # Detect the language of the input text
@@ -49,6 +49,7 @@ def get_img_text(path):
     
 def get_translated_text(img_text):
     translated_text = translate_text(img_text)
-    translate_text_arr = translated_text.split(" ")
-    translate_text_arr = convert_html_entites_to_ascii(translate_text_arr)
-    return translate_text_arr
+    print("TTEXT: " + translated_text)
+    translated_text_arr = translated_text.split(" || ")
+    translated_text_arr = convert_html_entites_to_ascii(translated_text_arr)
+    return translated_text_arr
