@@ -1,11 +1,15 @@
 var flashcardsContainer = document.getElementById("flashcards");
 var nextButton = document.getElementById("next");
 var prevButton = document.getElementById("prev");
+var choiceButtonOne = document.getElementById("Choice1");
+var choiceButtonTwo = document.getElementById("Choice2");
+var choiceButtonThree = document.getElementById("Choice3");
+var choiceButtonFour = document.getElementById("Choice4");
 
-flashcards = [];
+var flashcards = [];
 let randomAnswersArr = [];
-
-function getFlashcardData() {
+let curretFlashcard = 0;
+async function getFlashcardData() {
   return fetch("/data")
     .then((response) => response.json())
     .then((data) => {
@@ -20,8 +24,10 @@ async function main() {
     flashcards.push({ question: data[i].question, answer: data[i].answer });
   }
   generateFlashcards();
+
   for (let i = 0; i < flashcards.length; i++) {
     var randomAnswers = [];
+    randomAnswers.push(flashcards[i].answer);
     while (randomAnswers.length < 4) {
       let random = Math.floor(Math.random() * flashcards.length);
       if (!randomAnswers.includes(flashcards[random].answer)) {
@@ -30,8 +36,8 @@ async function main() {
     }
     randomAnswersArr.push(randomAnswers);
   }
+  renderQuestionAnswers();
 }
-console.log(randomAnswersArr);
 function generateFlashcards() {
   flashcards.forEach(function (flashcard, index) {
     var flashcardElement = document.createElement("div");
@@ -60,6 +66,9 @@ function generateFlashcards() {
 main();
 
 prevButton.onclick = function () {
+  curretFlashcard =
+    (curretFlashcard - 1 + flashcards.length) % flashcards.length;
+  renderQuestionAnswers();
   var current = document.querySelector(".flashcard.active");
   if (current.classList.contains("flipped")) {
     current.classList.remove("flipped");
@@ -78,6 +87,9 @@ prevButton.onclick = function () {
 };
 
 nextButton.onclick = function () {
+  curretFlashcard = (curretFlashcard + 1) % flashcards.length;
+  renderQuestionAnswers();
+
   var current = document.querySelector(".flashcard.active");
   if (current.classList.contains("flipped")) {
     current.classList.remove("flipped");
@@ -129,4 +141,11 @@ function getColor(x, y, offset) {
   const g = Math.round(15 * Math.abs(Math.sin(y * 2 * Math.PI + offset)));
   const b = Math.round(50 * Math.abs(Math.sin((x + y) * Math.PI + offset)));
   return `rgb(${r},${g},${b})`;
+}
+
+function renderQuestionAnswers() {
+  choiceButtonOne.innerText = randomAnswersArr[curretFlashcard][0];
+  choiceButtonTwo.innerText = randomAnswersArr[curretFlashcard][1];
+  choiceButtonThree.innerText = randomAnswersArr[curretFlashcard][2];
+  choiceButtonFour.innerText = randomAnswersArr[curretFlashcard][3];
 }
