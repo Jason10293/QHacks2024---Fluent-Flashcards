@@ -144,6 +144,45 @@ function getColor(x, y, offset) {
 }
 
 var videoElement = document.getElementById('video');
+var toggleButton = document.getElementById('toggleButton');
+var stream = null;
+
+function toggleWebcam() {
+  if (stream) {
+    // If webcam is on, stop the stream and update button text
+    stopWebcam();
+    toggleButton.textContent = 'Turn On Webcam';
+  } else {
+    // If webcam is off, start the webcam and update button text
+    startWebcam();
+    toggleButton.textContent = 'Turn Off Webcam';
+  }
+}
+
+function startWebcam() {
+  if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+    navigator.mediaDevices.getUserMedia({ video: true })
+      .then(function (newStream) {
+        stream = newStream;
+        videoElement.srcObject = stream;
+        videoElement.style.display = 'block';
+      })
+      .catch(function (error) {
+        console.error('Error accessing the camera:', error);
+      });
+  } else {
+    console.error('getUserMedia is not supported in this browser');
+  }
+}
+
+function stopWebcam() {
+  if (stream) {
+    var tracks = stream.getTracks();
+    tracks.forEach(track => track.stop());
+    videoElement.srcObject = null;
+    stream = null;
+  }
+}
 var canvas = document.createElement('canvas');
 var captureButton = document.getElementById('captureButton');
 
